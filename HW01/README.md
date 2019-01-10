@@ -1,6 +1,5 @@
 # Homework 01
-
-Cristian Stransky  
+### Cristian Stransky  
   
 I included both the html files and nginx configure files for both websites.   
   
