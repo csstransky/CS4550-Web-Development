@@ -9,5 +9,5 @@ The html files are located in html/\<site name\>/index.html
   
 I also included the images used by the hw01 site as well inside the site's html folder. 
   
-Homework 01 website:
-[hw01.csstransky.duckdns.org](https://hw01.csstransky.duckdns.org)
+Homework 01 website:  
+[hw01.csstransky.duckdns.org](http://hw01.csstransky.duckdns.org)
