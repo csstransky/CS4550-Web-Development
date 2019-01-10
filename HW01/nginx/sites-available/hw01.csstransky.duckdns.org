@@ -42,7 +42,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
 
-	server_name hw01.csstransky.duckdns.org www.hw01.csstransky.duckdns.org;
+	server_name hw01.csstransky.duckdns.org;
 
 	location / {
 		# First attempt to serve request as file, then
