@@ -1,5 +1,7 @@
 # Homework 01
 
+Cristian Stransky  
+  
 I included both the html files and nginx configure files for both websites.   
   
 The configuration files are located in nginx/sites-available/\<site name\>  
