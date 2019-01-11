@@ -3,7 +3,7 @@ Please fill in answers to the questions below:
 
 1. What's your name?
 Cristian Stransky
- 
+
 
 2. Which VPS & domain providers did you choose?
 I'm using a private home server made from spare computer parts:
@@ -25,11 +25,14 @@ Education to use a free namecheap .me domain name later.
 3. What domain name did you register?
 csstransky.duckdns.org (to be changed in the future)
 
+
 4. What's the URL of your Github repository for this assignment?
 https://github.com/csstransky/CS4550-Web-Development/tree/master/HW01
 
+
 5. Which parts of this assignment did you have trouble with, if any?
 Trying to find a way to get a free domain name.
+
 
 6. Did you complete your Bottlenose profile with a picture and 
 reasonable name?
