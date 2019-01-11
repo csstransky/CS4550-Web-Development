@@ -3,24 +3,41 @@ Please fill in answers to the questions below:
 
 1. What's your name?
 Cristian Stransky
+ 
 
 2. Which VPS & domain providers did you choose?
+I'm using a private home server made from spare computer parts:
+CPU: Dual-core i3-2100 3.1 GHz
+RAM: 4GB DDR3 
+Storage: 640 GB 7200RPM HDD
+OS: Ubuntu Server 18.04.1 LTS
+
+This means that my ports are forwarded on my modem, and my OS runs a 
+periodic crontab to update its IP to a dynamic DNS server, since my 
+ISP uses dynamic IP addresses (I commute, so this is done completely 
+outside NEU).
+
+For my domain name, I'm temporarily using a subdomain from 
+https://duckdns.org until I'm finally verified as a student by GitHub
+Education to use a free namecheap .me domain name later.
 
 
 3. What domain name did you register?
-
+csstransky.duckdns.org (to be changed in the future)
 
 4. What's the URL of your Github repository for this assignment?
-
+https://github.com/csstransky/CS4550-Web-Development/tree/master/HW01
 
 5. Which parts of this assignment did you have trouble with, if any?
+Trying to find a way to get a free domain name.
+
+6. Did you complete your Bottlenose profile with a picture and 
+reasonable name?
+Yes.
 
 
-6. Did you complete your Bottlenose profile with a picture and reasonable name?
-
-
-
-And here's a list of tasks for grading comments. Just leave this here:
+And here's a list of tasks for grading comments. Just leave this  
+here:
  - Task 1
  - Task 2
  - Task 3
