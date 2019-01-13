@@ -21,9 +21,15 @@ For my domain name, I'm temporarily using a subdomain from
 https://duckdns.org until I'm finally verified as a student by GitHub
 Education to use a free namecheap .me domain name later.
 
+UPDATE: I have been approved by GitHub Education, so I am now using 
+namecheap as a domain provider.
+
 
 3. What domain name did you register?
 csstransky.duckdns.org (to be changed in the future)
+
+UPDATE: cstransky.me is now my domain name, though I am still hosting
+the duckDNS domain name as well on my private server.
 
 
 4. What's the URL of your Github repository for this assignment?

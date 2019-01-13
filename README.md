@@ -3,4 +3,4 @@
 Spring 2019
 
 Link to main website:  
-[csstransky.duckdns.org](http://csstransky.duckdns.org)
+[cstransky.me](http://cstransky.me)

@@ -13,4 +13,5 @@ Homework 01 website:
 
 Note: *hw01.csstransky.duckdns.org* was used as a temporary domain name so I could complete
 this homework before the due date; it is included in this repo as well. The domain name
-is still hosted on my private server as well.
+is also still hosted on my private server that will direct you to the true domain name 
+so there is no confusion during grading.
