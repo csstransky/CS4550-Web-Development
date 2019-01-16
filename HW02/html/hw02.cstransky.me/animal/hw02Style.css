@@ -1,0 +1,26 @@
+body {
+  width: 35em;
+  margin: 0 auto;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+}
+
+#duck1 {
+  color: red;
+}
+
+#duck2 {
+  color: green;
+}
+
+#duck3 {
+  color: orange;
+}
+
+#duck4 {
+  color: blue;
+}
+
+th, td {
+	width: 50px;
+  border: 1px solid black;
+}
