@@ -1,0 +1,16 @@
+# Default server configuration
+#
+server {
+	listen 80;
+
+	root /home/cristian/www/html/hw02.cstransky.me;
+  index index.html animal.html calc.html;
+
+	server_name hw02.cstransky.me;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+}
