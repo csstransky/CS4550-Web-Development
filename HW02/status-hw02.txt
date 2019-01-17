@@ -5,8 +5,8 @@ Please fill in answers to the questions below:
 Cristian Stransky
 
 2. What hostname did you deploy to?
-cstransky.me
-hw02.cstransky.me
+http://cstransky.me
+http://hw02.cstransky.me
 
 3. What's the link to your repository on github with your code?
 https://github.com/csstransky/CS4550-Web-Development/tree/master/HW02
@@ -15,7 +15,8 @@ https://github.com/csstransky/CS4550-Web-Development/tree/master/HW02
 Zero
 
 5. How comfortable do you feel with HTML and CSS now?
-Somewhat comfortable, but I'd rather use an HTML and CSS generator.
+Somewhat comfortable, but I'd rather use an HTML and CSS generator to 
+save time, and to make more attractive webpages.
 
 6. How many JS tutorial exercises did you do?
 Zero
@@ -26,10 +27,12 @@ oriented programming in JS.
 
 8. Do all of your HTML pages pass the W3C HTML validator?
 (https://validator.w3.org/)
-
+Yes, all of my webpages are shown by w3.org as 
+"Document checking completed. No errors or warning to show."
 
 9. Which parts of this assignment did you have trouble with, if any?
-
+Getting the CSS to be just right, and understanding JS's quirks, including
+scoping.
 
 
 
