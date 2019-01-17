@@ -4,10 +4,20 @@ body {
   font-family: Tahoma, Verdana, Arial, sans-serif;
 }
 
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th, td {
+	width: 50px;
+  border: 1px solid black;
+}
+
 #calcBackground {
   width: 450px;
   height: 550px;
-  font-size: 21px;
+  font-size: 23px;
   text-align: right;
   background-color: rgb(60,60,60);
   color: white;
@@ -29,12 +39,23 @@ body {
   text-align: right;
 }
 
+.numberButton {
+  background-color: gray;
+}
+
+.operatorButton, #buttonPlusEquals {
+  background-color: rgb(100,100,100);
+}
+
+#buttonClear {
+  background-color: red;
+}
+
 button {
   height: 100px;
   width: 100px;
   color: white;
   background-color: gray;
-  font-size: 40px;
 }
 
 .allButtons {
@@ -45,12 +66,3 @@ button {
   grid-column-gap: 10px;
   grid-width: 255px;
 }
-
-.operatorButton, #buttonPlusEquals {
-  background-color: rgb(95,95,95);
-}
-
-#buttonClear {
-  background-color: red;
-}
-
