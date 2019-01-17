@@ -8,13 +8,13 @@
       document.getElementById("output").innerHTML = number;
       operatorOn = false;
     }
-    else {
+		else {
       document.getElementById("output").innerHTML += number;
     }
   }
 
   function onOperatorButtonPress(operator) {
-  	// Concatting to a null value doesn't in JavaScript, have to do this
+		// Concatting to a null value doesn't in JavaScript, have to do this
 		if (storedValue == "") {
 			storedValue = document.getElementById("output").innerHTML + operator;    
 		}
@@ -28,7 +28,7 @@
 		}
 		console.log("storedValue: " + storedValue);
 		operatorOn = true;
-  }
+	}
 
 	// Works exactly like addition, but also shows the equation so far as well
   function onPlusEqualsButtonPress() {
