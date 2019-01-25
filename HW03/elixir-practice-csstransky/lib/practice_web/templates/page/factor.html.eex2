@@ -4,6 +4,9 @@
     <h2>TODO: Make this a lot more attractive laterArithmetic Results</h2>
 
     <p><%= @x %> = </p>
+    <% for factor <- @y do %>
+      <p><%= factor %></p>
+    <% end %>
   </div>
 </div>
 
