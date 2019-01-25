@@ -23,16 +23,17 @@
     <h2>Prime Factors</h2>
 
     <%= form_for @conn, "/factor", fn f -> %>
-      <p>Enter number: <%= text_input f, :x %></p>
+      <p>Enter number: <%= text_input f, :x, placeholder: "12" %></p>
       <p><%= submit "Factor It" %></p>
     <% end %>
   </div>
   <div class="column">
     <h2>Palindrome?</h2>
 
-    <p>TODO: Add a form here that checks if a string is a palindrome.</p>
-    <p>INPUT BOX</p>
-    <p>SUBMIT BUTTON</p>
+    <%= form_for @conn, "/palindrome", fn f -> %>
+      <p>Enter a word: <%= text_input f, :string, placeholder: "racecar"%></p>
+      <p><%= submit "Check" %></p>
+    <% end %>
   </div>
 </div>
 

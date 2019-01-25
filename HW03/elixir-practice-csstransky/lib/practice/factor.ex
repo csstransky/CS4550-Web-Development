@@ -6,9 +6,7 @@ defmodule Practice.Factor do
 
   # Returns a list of prime factors for the given "x": 12 = [2, 2, 3]
   def primes(x) do
-    # TODO: Make it so you only prime the first number, so parse the "x", and
-    # then only use the first element
-    primes(x, 2, [])
+    primes(parse_integer(x), 2, [])
     |> Enum.sort
   end
 

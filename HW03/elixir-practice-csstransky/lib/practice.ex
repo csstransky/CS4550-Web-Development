@@ -19,7 +19,6 @@ defmodule Practice do
   def factor(x) do
     # Maybe delegate this too.
     Practice.Factor.primes(x)
-    #[1,2,x]
   end
 
   # TODO: Add a palindrome? function.
