@@ -1,12 +1,8 @@
 defmodule Practice.Factor do
-  def parse_integer(x) do
-    {num, _} = Integer.parse(x)
-    num
-  end
-
+  
   # Returns a list of prime factors for the given "x": 12 = [2, 2, 3]
   def primes(x) do
-    primes(parse_integer(x), 2, [])
+    primes(x, 2, [])
     |> Enum.sort
   end
 

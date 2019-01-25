@@ -3,10 +3,7 @@
     <p><%= link "← go back", to: "/" %></p>
     <h2>TODO: Make this a lot more attractive laterArithmetic Results</h2>
 
-    <p><%= @x %> = </p>
-    <% for factor <- @y do %>
-      <p><%= factor %></p>
-    <% end %>
+    <p><%= @x %> = <%= @y %></p>
   </div>
 </div>
 

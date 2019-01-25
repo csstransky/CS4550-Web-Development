@@ -21,8 +21,8 @@ defmodule Practice do
     Practice.Factor.primes(x)
   end
 
-  # TODO: Add a palindrome? function.
   def palindrome?(string) do
-    
+    rev_string = String.reverse(string)
+    string == rev_string 
   end
 end
