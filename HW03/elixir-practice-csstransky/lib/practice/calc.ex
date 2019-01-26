@@ -26,10 +26,21 @@ defmodule Practice.Calc do
     end
   end
 
+  def set_op_rank(operator) do
+    cond do
+      operator == "*" || operator == "/" ->
+        2
+      operator == "+" || operator == "-" ->
+        1
+      true ->
+        0
+    end
+  end
+
   def is_lower_operator(comp_op, stack_op) do
-    # Maybe I could do something with ASCII values, or use a switch case, but
-    # this quick boolean statement works (not for anything complicated though)
-    (stack_op == "*" || stack_op == "/") && (comp_op == "+" || comp_op == "-")
+    comp_op = set_op_rank(comp_op)
+    stack_op = set_op_rank(stack_op)
+    comp_op <= stack_op  
   end
 
   def conv_postfix(expr_list) do
@@ -37,20 +48,28 @@ defmodule Practice.Calc do
   end
 
   def conv_postfix(expr_list, op_stack, postfix_list) when expr_list == [] do
+    IO.puts "Stick the landing"
+    IO.puts inspect(postfix_list)
+    IO.puts inspect(op_stack)
     postfix_list ++ op_stack
   end
   
   def conv_postfix(expr_list, op_stack, postfix_list) do
-    
+ 
     [head | tail] = expr_list
     head_key = elem(head, 0)
     head_value = elem(head, 1)
 
     cond do
       head_key == :op ->
-        last_stack_op = List.last(op_stack)
-        if is_lower_operator(head_value, last_stack_op) do
-          conv_postfix(tail, [head_value], postfix_list ++ op_stack)
+        first_stack_op = List.first(op_stack)
+        if is_lower_operator(head_value, first_stack_op) do 
+          # Have to do this because Elixir can't handle empty lists
+          if tl(op_stack) == nil do
+            conv_postfix(tail, [head_value], postfix_list ++ [first_stack_op])
+          else
+            conv_postfix(tail, [head_value] ++ tl(op_stack), postfix_list ++ [first_stack_op])
+          end
         else
           conv_postfix(tail, [head_value] ++ op_stack, postfix_list)
         end 
@@ -169,7 +188,7 @@ defmodule Practice.Calc do
     |> String.split(~r/\s+/)
     |> tag_tokens
     |> conv_postfix
-    #|> eval_postfix
+    |> eval_postfix
     #|> postfix_to_prefix
     #|> eval_prefix
     #|> hd
