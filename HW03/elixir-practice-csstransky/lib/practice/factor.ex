@@ -1,8 +1,24 @@
 defmodule Practice.Factor do
+
+  def parse_integer(text) do
+    try do
+      if is_integer(text) do
+        text
+      else
+        {num, _} = Integer.parse(text)
+        num
+      end
+    rescue
+      MatchError -> 0
+    end
+  end
+
   
   # Returns a list of prime factors for the given "x": 12 = [2, 2, 3]
   def primes(x) do
-    primes(x, 2, [])
+    x
+    |> parse_integer
+    |> primes(2,[])
     |> Enum.sort
   end
 
