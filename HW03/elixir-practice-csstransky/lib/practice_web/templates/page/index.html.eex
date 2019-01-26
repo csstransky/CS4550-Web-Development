@@ -24,6 +24,7 @@
 
     <%= form_for @conn, "/factor", fn f -> %>
       <p>Enter number: <%= text_input f, :x, placeholder: "12" %></p>
+
       <p><%= submit "Factor It" %></p>
     <% end %>
   </div>
