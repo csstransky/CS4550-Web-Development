@@ -6,13 +6,16 @@ configure file, and the systemd service file used to allow the page to start
 automatically on start-up.  
   
 The nginx configuration file is located in 
-**nginx/sites-available/\<practice.nginx\>**  
-The html file is located in **html/cstransky.me/\<index.html\>**  
+**nginx/sites-available/practice.nginx**  
+The html file is located in **html/cstransky.me/index.html**  
 The systemd service file is located in 
-**systemd/system/\<practice\_app.service\>**  
+**systemd/system/practice\_app.service**  
+The **elixir-practice-csstransky/** folder includes code originally forked from
+Nat Tuck's [repo](https://github.com/NatTuck/elixir-practice). All the backend
+for the homework 3 page is in this folder.  
   
 Homework 03 website:  
-[hw03.cstransky.me](http://hw03.cstransky.me)  
+**[hw03.cstransky.me](http://hw03.cstransky.me)**  
   
 **Note:** For the "Arithmetic Expression" function on the website, it can only
 evaluate functions properly that are divided by spaces.   
