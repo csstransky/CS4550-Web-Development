@@ -27,6 +27,7 @@ defmodule Practice.Calc do
   end
 
   def set_op_rank(operator) do
+    # Possible to add the rest of PEMDAS here in the future too
     cond do
       operator == "*" || operator == "/" ->
         2
@@ -61,7 +62,7 @@ defmodule Practice.Calc do
       expr_head_key == :op ->
         op_head = List.first(op_stack)
         if is_lower_operator(expr_head_value, op_head) do 
-          # Have to do this because Elixir can't handle empty lists
+          # Have to do this because Elixir can't handle empty lists doing "tl"
           if tl(op_stack) == nil do
             conv_postfix(expr_tail, [expr_head_value], postfix_list ++ [op_head])
           else
@@ -116,9 +117,13 @@ defmodule Practice.Calc do
     # This should handle +,-,*,/ with order of operations,
     # but doesn't need to handle parens.
     expr
+    # Provided function that'll take "1 + 2 * 3" into ["1", "+", "2", "*", "3"]
     |> String.split(~r/\s+/)
+    # Creates tuples like: [num: "1", op: "+", num: "2", op: "*", num: "3"]
     |> tag_tokens
+    # Converts into postfix for easy manipulation: ["1", "2", "3", "*", "+"]
     |> conv_postfix
+    # Decided to just eval using postfix from here to get the answer: 7.0
     |> eval_postfix
   end
 end
