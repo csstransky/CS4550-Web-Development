@@ -3,7 +3,7 @@
     <p><%= link "← go back", to: "/" %></p>
     <h2>Palindrome?</h2>
 
-    <p><%= @string %> = <%= @y %></p>
+    <p>"<%= @string %>" = <b><%= @y %></b></p>
   </div>
 </div>
 

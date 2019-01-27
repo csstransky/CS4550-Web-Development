@@ -3,7 +3,7 @@
     <p><%= link "← go back", to: "/" %></p>
     <h2>Prime Factors</h2>
 
-    <p><%= @x %> = <%= inspect(@y) %></p>
+    <p><%= @x %> = <b><%= inspect(@y) %></b></p>
   
   </div>
 </div>

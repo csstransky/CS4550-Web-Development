@@ -3,7 +3,7 @@
     <p><%= link "← go back", to: "/" %></p>
     <h2>Arithmetic Results</h2>
 
-    <p><%= @expr %> = <%= @y %></p>
+    <p><%= @expr %> = <b><%= @y %></b></p>
   </div>
 </div>
 

@@ -4,6 +4,6 @@
     <h2>Double Results</h2>
 
     <p>x = <%= @x %></p>
-    <p>2 * x = <%= @y %></p>
+    <p>2 * x = <b><%= @y %></b></p>
   </div>
 </div>
