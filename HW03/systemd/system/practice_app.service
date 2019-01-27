@@ -1,0 +1,16 @@
+[Unit]
+Description=Practice App
+
+[Service]
+Type=simple
+User=practice_app
+Group=practice_app
+Restart=on-failure
+Environment=MIX_ENV=prod "PORT=4791"
+Environment=LANG=en_US.UTF-8
+
+WorkingDirectory=/home/practice_app/elixir-practice-csstransky
+ExecStart=/home/practice_app/elixir-practice-csstransky/start.sh
+
+[Install]
+WantedBy=multi-user.target

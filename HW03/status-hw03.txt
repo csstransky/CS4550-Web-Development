@@ -1,0 +1,46 @@
+Please fill in answers to the questions below:
+
+
+1. What's your name?
+Cristian Stransky
+
+2. What hostname did you deploy to for Task 2?
+hw03.cstransky.me
+
+3. What's the URL of your git repo for Task 2?
+https://github.com/csstransky/CS4550-Web-Development/tree/master/HW03
+
+4. How much of the functionality did you complete?
+All 4 functions.
+
+5. Did you successfully deploy? If not, what's broken?
+Yes, even set up the systemd file to start the website on reboot (included in 
+the repo).
+
+6. How comfortable do you feel with Elixir now?
+Somewhat comfortable, I still have issues writing good tail recursive functions
+instead of the usual stack resursive functions.
+
+7. Which parts of this assignment did you have trouble with, if any?
+Doing the expression Practice.Calc.calc() function. I foolishly followed Tuck's
+advice function for function, but decided it's much easier to put the 
+expression into postfix (or prefix) then simply evaluate from there instead of 
+converting from postfix to prefix, then evaluating. Also, "tagging" operations 
+([{:num, "3"}, {:op, "+"}, {:num, "10"}) was mostly useless and superfluous.
+
+Deployment was also difficult because I actually ran out of inodes on my server
+while deploying my page, and it took me a while to find the problem and fix it
+(I eventually cleared my /tmp and /var/log/ folders, which funnily created a 
+small problem with nginx in the process, but fixed my inode problem).
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Task 1
+ - Task 2
+ - Task 3
+ - Task 4
+ - Task 5
+ - Task 6
+ - Task 7
+ - Task 8

@@ -43,7 +43,7 @@
 		console.log("storedValue: " + storedValue);
   }
 
-	function onDecimalButtonPress() {
+  function onDecimalButtonPress() {
 		// Will only allow for a decimal to be input if there isn't one already
 		// Good: 22.33
 		// Bad: 22.3.3
