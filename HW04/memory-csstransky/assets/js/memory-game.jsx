@@ -41,21 +41,36 @@ class Starter extends React.Component {
     this.setState(state1);
   }
 
-  hax(_ev) {
-    alert("hax!");
-  }
-
-	flip(_ev) {
+	flip(ii, _ev) {
+		console.log("show indse" + ii);
 		let compare_string = this.state.compare_string;
-		let state1 = this.state.panel_list.filter(panel => { panel.hidden = false; });
-		this.setState(state1);
+		if (compare_string == "") {
+			console.log("compare string is empty = " + compare_string);
+		}
+		else {
+			console.log("compare string is here = " + compare_string);
+		}
+		let state1 = this.state.panel_list
+			.map((panel, jj) => { 
+			if (jj === ii) {
+				return {...panel, hidden: !panel.hidden}
+			}
+			else {
+				return panel;
+			}});
+		this.setState({
+			panel_list: state1,
+			compare_string: this.state.panel_list[ii].value
+		});
 	}
 
   render() {
-		let y = this.state.panel_list.map(panel => { 
-				return <div className="column">
-            <div className="panel" onClick={this.flip.bind(this)}>
+		let y = this.state.panel_list.map((panel, ii) => { 
+				return <div className="column" key={ii}>
+            <div className="panel" 
+								 onClick={this.flip.bind(this, ii)}>
 							<p>{panel.hidden.toString()}</p>
+							<p>index: {ii}</p>
 							<RenderPanel value={panel.value}
 													 hidden={panel.hidden} />
             </div>
@@ -66,7 +81,8 @@ class Starter extends React.Component {
 		  return <div className="row">
 		});
 */
-		return <div>{this.state.panel_list[1].value} {y}</div>;
+		return <div>{this.state.panel_list[1].value} 
+			{this.state.compare_string} {y}</div>;
   }
 }
 
