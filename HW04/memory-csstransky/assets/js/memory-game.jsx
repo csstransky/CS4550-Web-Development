@@ -10,27 +10,6 @@ class Starter extends React.Component {
   constructor(props) {
     super(props);
 
-		// Assign random varibles
-		//	Make array of strings [A, A, B, B, ...], just do it dumb way for now
-		//	for(i=0; i<length; i++)
-		//		tempVal = pop array of strings
-		//		randomIndex = randFunc(0, end of array)
-		//
-		//		if panel_list[randomIndex] is not empty
-		//			
-		//			while(spotFilled)
-		//				randomIndex += 1
-		//				if randomIndex > panel_list.length
-		//					randomIndex = 0
-		//				
-		//				if panel_list[randomIndex] is empty
-		//					panel_list[randomIndex].value = tempVal
-		//					spotFilled = true
-		//
-		//		else if value is empty
-		//			panel_list[randomIndex].value = tempVal
-
-
 		// When panel is clicked, 
 		//	check if compare_string is empty:
 		//		if empty and panel is hidden, 
@@ -66,12 +45,19 @@ class Starter extends React.Component {
     alert("hax!");
   }
 
-  render() {
+	flip(_ev) {
+		let compare_string = this.state.compare_string;
+		let state1 = this.state.panel_list.filter(panel => { panel.hidden = false; });
+		this.setState(state1);
+	}
 
-		let y = this.state.panel_list.map(function (list) { 
+  render() {
+		let y = this.state.panel_list.map(panel => { 
 				return <div className="column">
-            <div class="panel">
-              <p>x is {list.value}</p>
+            <div className="panel" onClick={this.flip.bind(this)}>
+							<p>{panel.hidden.toString()}</p>
+							<RenderPanel value={panel.value}
+													 hidden={panel.hidden} />
             </div>
 					</div>;
 				});
@@ -80,7 +66,15 @@ class Starter extends React.Component {
 		  return <div className="row">
 		});
 */
-		return <div>{y}</div>;
+		return <div>{this.state.panel_list[1].value} {y}</div>;
   }
 }
 
+function RenderPanel({value}, {hidden}) {
+	if (hidden) {
+		return <p>hide</p>;
+	}
+	else {
+		return <p>{hidden}no ide: {value}</p>;
+	}
+}
