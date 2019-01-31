@@ -9,53 +9,52 @@ export default function game_init(root) {
 class Starter extends React.Component {
   constructor(props) {
     super(props);
-		{/* You'll get this working one day
-			this.state = {
-			panel_grid: [
-				// Rows
-				for (let i=0; i<num_of_rows; i++) {
-					let row = []
-					// Columns
-					for (let j=0; j<num_of_cols; j++) {
-						row.push(value: "A", hidden: true)
-					}
-				}
-			]
-		},
-		*/}
 
-		{/* This will only be for debugging
-    this.state = { 
-			panel_grid: [
-				{ panel_row1: [ { value: "A", hidden: true },
-												{ value: "A", hidden: true },
-												{ value: "B", hidden: true },
-												{ value: "B", hidden: true }
-											] },
-				{ panel_row2: [ { value: "C", hidden: true },
-												{ value: "C", hidden: true },
-												{ value: "D", hidden: true },
-												{ value: "D", hidden: true }
-											] },
-				{ panel_row3: [ { value: "E", hidden: true },
-												{ value: "E", hidden: true },
-												{ value: "F", hidden: true },
-												{ value: "F", hidden: true }
-											] },
-				{ panel_row4: [ { value: "G", hidden: true },
-												{ value: "G", hidden: true },
-												{ value: "H", hidden: true },
-												{ value: "H", hidden: true }
-											] }
-			]
-		};
-		*/}
+		// Assign random varibles
+		//	Make array of strings [A, A, B, B, ...], just do it dumb way for now
+		//	for(i=0; i<length; i++)
+		//		tempVal = pop array of strings
+		//		randomIndex = randFunc(0, end of array)
+		//
+		//		if panel_list[randomIndex] is not empty
+		//			
+		//			while(spotFilled)
+		//				randomIndex += 1
+		//				if randomIndex > panel_list.length
+		//					randomIndex = 0
+		//				
+		//				if panel_list[randomIndex] is empty
+		//					panel_list[randomIndex].value = tempVal
+		//					spotFilled = true
+		//
+		//		else if value is empty
+		//			panel_list[randomIndex].value = tempVal
+
+
+		// When panel is clicked, 
+		//	check if compare_string is empty:
+		//		if empty and panel is hidden, 
+		//			show that panel
+		//			compare_string = value of that panel
+		//		else not empty and panel is hidden,
+		//			show that panel
+		//
+		//			if compare_string and that value of panel are the same
+		//				do nothing?
+		//			else they're not the same
+		//				short delay (3 sec?)
+		//				hide panel
+		//				hide compare_string panel
+		//
+		//			compare_string = "" again
+		
 		this.state = {
-			items: [
-				{ value: "A", hidden: true },
-				{ value: "B", hidden: false }
-			]
-		};
+			panel_list: _.shuffle("AABBCCDDEEFFGGHH")
+        .map(function (letter) {
+				  return { value: letter, hidden: true }; 
+        }),
+      compare_string: ""
+		}
   }
 
   swap(_ev) {
@@ -68,26 +67,20 @@ class Starter extends React.Component {
   }
 
   render() {
-    let button = <div className="column" onMouseMove={this.swap.bind(this)}>
-      <p><button onClick={this.hax.bind(this)}>Click Me</button></p>
-    </div>;
 
-    let blank = <div className="column">
-      <p>Nothing here.</p>
-    </div>;
-
-    if (this.state.left) {
-      return <div className="row">
-        {button}
-        {blank}
-      </div>;
-    }
-    else {
-      return <div className="row">
-        {blank}
-        {button}
-      </div>;
-    }
+		let y = this.state.panel_list.map(function (list) { 
+				return <div className="column">
+            <div class="panel">
+              <p>x is {list.value}</p>
+            </div>
+					</div>;
+				});
+/*
+		let rows = this.state.panel_list.map(function (x) {
+		  return <div className="row">
+		});
+*/
+		return <div>{y}</div>;
   }
 }
 
