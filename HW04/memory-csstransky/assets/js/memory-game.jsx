@@ -73,18 +73,16 @@ class Starter extends React.Component {
 					return panel;
 			}});
 
-		// Fixes bug where you can't match the same exact panel
-		if (ii != compare_panel_index) {
 			// First block to compare click
 			if (this.state.panel_list[ii].hidden && compare_string == "") {
 				this.setState({
 					panel_list: state2,
 					compare_string: this.state.panel_list[ii].value,
-					score: this.state.score + 1,
 				});
 			}
 			// Match found
-			else if (this.state.panel_list[ii].value == compare_string){
+			else if (this.state.panel_list[ii].value == compare_string 
+        && ii != compare_panel_index){
 				console.log("BIGGER RIOT");
 				this.setState({
 					panel_list: state2,
@@ -119,9 +117,8 @@ class Starter extends React.Component {
 						panel_list: state4,
 						compare_string: "",
 					});
-				}.bind(this), 600);
+				}.bind(this), 625);
 			}
-		}
 	}
 
  	reset() {
@@ -139,7 +136,7 @@ class Starter extends React.Component {
   render() {
 		let gameboard = _.map(
 			_.chunk(this.state.panel_list, 4), (rowOfTiles, rowNum) => {
-				return <div className="row" key={rowNum}>	{
+				return <div className="row" key={rowNum}>{
 						_.map(rowOfTiles, (panel, colNum) => {
 							let ll = rowNum * 4 + colNum;
 							return <div className="column" key={ll}>
@@ -150,8 +147,7 @@ class Starter extends React.Component {
 								</div>					
 							</div>;
 							})
-						}
-					</div>
+						}</div>
 				});
 
 		return <div>SCORE: {this.state.score} 

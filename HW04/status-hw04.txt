@@ -25,6 +25,14 @@ too fast.
 NOTE: If the delay seems fast, it's because I made it fast to try and avoid the
 user getting ahead of the game logic because I didn't set up any locks
 
+NOTE: I'm not sure it's specified in the actual assigment, but the score 
+doesn't increase when you get two boxes correct, it only adds to your score
+when you get the boxes wrong. Example: A perfect game is a score of 0, screwing
+up two boxes adds 1 point.
+
+NOTE: I wish I could've made it more attractive, but I didn't have time to play
+with the CSS file.
+
 
 5. Is your game properly deployed? If not, what went wrong?
 It's deployed correctly.
