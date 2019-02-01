@@ -31,7 +31,8 @@ class Starter extends React.Component {
         .map(function (letter) {
 				  return { value: letter, hidden: true }; 
         }),
-      compare_string: ""
+      compare_string: "",
+			score: 0
 		}
   }
 
@@ -60,22 +61,6 @@ class Starter extends React.Component {
 						return {...panel, hidden: false}
 					}
 					else if (compare_string != panel.value) {					
-						/*
-						window.setTimeout(function () {
-							console.log("TIMEOUT?", this);
-							let state3 = this.state.panel_list.map((panel3, kk) => {
-								if (jj === kk) {
-									return {...panel3, hidden: false }
-								}
-								else {
-									return panel3;
-								}
-							});
-							this.setState({
-								panel_list: state3
-							})
-						}.bind(this), 3000);
-						*/
 						// Show panel here
 						// Add delay here before hiding agai
 						console.log("ARE YOU OUT THERE?")
@@ -83,7 +68,7 @@ class Starter extends React.Component {
 						return {...panel, hidden: false }	
 					}
 					else {
-						return panel;
+						return {...panel, hidden: false };
 					}
 				}
 				else {
@@ -120,14 +105,23 @@ class Starter extends React.Component {
 			if (this.state.panel_list[ii].hidden && compare_string == "") {
 				this.setState({
 					panel_list: state2,
-					compare_string: this.state.panel_list[ii].value
+					compare_string: this.state.panel_list[ii].value,
+					score: this.state.score + 1,
 				});
-			} 
+			}
+			// Match found
+			else if (this.state.panel_list[ii].value == compare_string){
+				console.log("BIGGER RIOT");
+				this.setState({
+					panel_list: state2,
+					compare_string: "",
+				});
+			}
 			// No Match found
 			else if (this.state.panel_list[ii].hidden && compare_string != "") {	
 				this.setState({
 					panel_list: state2,
-					compare_string: ""
+					score: this.state.score + 1,
 				});
 				window.setTimeout(function () {
 					console.log("TIMEOUT?", this);
@@ -141,6 +135,7 @@ class Starter extends React.Component {
 					});
 					let state4 = state3.map((panel4, jj) => { 
 						if (jj === ii) {
+							console.log("RIOT")
 							return {...panel4, hidden: true}
 						}
 						else {
@@ -150,7 +145,7 @@ class Starter extends React.Component {
 
 					this.setState({
 						panel_list: state4,
-						compare_string: ""
+						compare_string: "",
 					});
 				}.bind(this), 1000);
 			
@@ -162,12 +157,6 @@ class Starter extends React.Component {
 
 				*/
 			}
-			// Match found
-			else {
-				this.setState({
-					panel_list: state2,
-				});
-			}
 		}
 	}
 
@@ -177,7 +166,8 @@ class Starter extends React.Component {
 				.map(function (letter) {
 					return { value: letter, hidden: true }; 
 				}),
-			compare_string: ""
+			compare_string: "",
+			score: 0
 		}
 		this.setState(state1);
 	}
@@ -262,7 +252,6 @@ class Starter extends React.Component {
 				_.map(rowOfTiles, (panel, colNum) => {
 					let ll = rowNum * 4 + colNum;
 					return <div className="column" key={ll}>
-						<p>{console.log("panel", panel, "ll", ll)}</p>
 						<div className="panel" 
 							 	 onClick={this.flip.bind(this, ll)}>
 						<RenderPanel value={panel.value}
@@ -284,7 +273,7 @@ class Starter extends React.Component {
 					</div>;
 				});
 
-		return <div>Compare String: {this.state.compare_string} 
+		return <div>SCORE: {this.state.score}  Compare String: {this.state.compare_string} 
 				{yy}
 				<p><button onClick={this.reset.bind(this)}>Restart</button></p>
 			</div>;
