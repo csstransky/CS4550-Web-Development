@@ -34,6 +34,12 @@ class Starter extends React.Component {
       compare_string: "",
 			score: 0
 		}
+
+    this.channel.join().receive("ok", resp => {
+      console.log("Joined successfully", resp);
+      this.setState(resp.game);
+    })
+    .receive("error", resp => { console.log("Unable to join", resp); });
   }
 
 	flip(ii, _ev) {
@@ -69,7 +75,8 @@ class Starter extends React.Component {
 						return {...panel, hidden: false };
 					}
 				}
-				else {
+				anel_list, 1,                                
+                  fn panel -> Map.put(panel, :hidden, false) end)  else {
 					return panel;
 			}});
 
