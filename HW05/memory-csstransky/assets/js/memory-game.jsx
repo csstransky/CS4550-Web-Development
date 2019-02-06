@@ -2,28 +2,36 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 
-export default function game_init(root) {
-  ReactDOM.render(<Starter />, root);
+export default function game_init(root, channel) {
+  ReactDOM.render(<Memory channel={channel} />, root);
 }
 
-class Starter extends React.Component {
+class Memory extends React.Component {
   constructor(props) {
     super(props);
 
 		this.channel = props.channel;
-		this.state = {};
+		this.state = {
+      panel_list: ["a"],
+      compare_string: "",
+      score: 0,
+    };
 		this.channel.join()
-			.receive("ok", response => {
+			.receive("ok", resp => {
 				console.log("Joined successfully", resp);
+        this.got_view.bind(resp);
 			})
-			.receive("error", response => { 
-				console.log("Unable to join", resp); 
+			.receive("error", resp => {
+				console.log("Unable to join", resp);
 			});
-		this.channel.push("reset").receive("ok", (resp) => {
-			this.setState(resp.game);
-		});
+
 		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 
+  }
+
+  got_view(view) {
+    console.log("new view", view);
+    this.setState(view.game);
   }
 
 	flip(clicked_panel_index, _ev) {
@@ -46,17 +54,17 @@ class Starter extends React.Component {
 						_.map(rowOfTiles, (panel, colNum) => {
 							let ll = rowNum * 4 + colNum;
 							return <div className="column" key={ll}>
-								<div className="panel" 
+								<div className="panel"
 										 onClick={this.flip.bind(this, ll)}>
 								<RenderPanel value={panel.value}
 														 hidden={panel.hidden} />
-								</div>					
+								</div>
 							</div>;
 							})
 						}</div>
 				});
 
-		return <div>SCORE: {this.state.score} 
+		return <div>SCORE: {this.state.score}
 				{gameboard}
 				<p><button onClick={this.reset.bind(this)}>Restart</button></p>
 			</div>;
