@@ -10,134 +10,33 @@ class Starter extends React.Component {
   constructor(props) {
     super(props);
 
-		// When panel is clicked,
-		//	if panel.hidden == true
-		//		if compare_string == empty 
-		//			panel.hidden = false
-		//			compare_string = panel.value
-		//
-		//		else compare_string != empty
-		//			show that panel
-		//
-		//			if compare_string != panel.value
-		//				short delay (3 sec?)
-		//				panel.hidden = true
-		//				hide compare_string panel
-		//
-		//			compare_string = ""
-		
-		this.state = {
-			panel_list: _.shuffle("AABBCCDDEEFFGGHH")
-        .map(function (letter) {
-				  return { value: letter, hidden: true }; 
-        }),
-      compare_string: "",
-			score: 0
-		}
+		this.channel = props.channel;
+		this.state = {};
+		this.channel.join()
+			.receive("ok", response => {
+				console.log("Joined successfully", resp);
+			})
+			.receive("error", response => { 
+				console.log("Unable to join", resp); 
+			});
+		this.channel.push("reset").receive("ok", (resp) => {
+			this.setState(resp.game);
+		});
+		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 
-    this.channel.join().receive("ok", resp => {
-      console.log("Joined successfully", resp);
-      this.setState(resp.game);
-    })
-    .receive("error", resp => { console.log("Unable to join", resp); });
   }
 
-	flip(ii, _ev) {
-		let compare_string = this.state.compare_string;
-
-		let compare_panel_index = this.state.panel_list
-			.findIndex((panel, jj) => {
-				if (panel.value === this.state.compare_string && !panel.hidden) {
-					return jj;
-				}
-		});
-
-    // Weird bug where the 0 element will return -1 instead
-    if (compare_panel_index == -1) {
-      compare_panel_index = 0;
-    }
-
-		let swap_back_last_panel = false;
-		let state2 = this.state.panel_list
-			.map((panel, jj) => { 
-				if (jj === ii && panel.hidden) {
-					console.log("Found panel: " + jj);
-					if (compare_string == "") {
-						return {...panel, hidden: false}
-					}
-					else if (compare_string != panel.value) {					
-						// Show panel here
-						// Add delay later with this flag
-						swap_back_last_panel = true;
-						return {...panel, hidden: false }	
-					}
-					else {
-						return {...panel, hidden: false };
-					}
-				}
-				anel_list, 1,                                
-                  fn panel -> Map.put(panel, :hidden, false) end)  else {
-					return panel;
-			}});
-
-			// First block to compare click
-			if (this.state.panel_list[ii].hidden && compare_string == "") {
-				this.setState({
-					panel_list: state2,
-					compare_string: this.state.panel_list[ii].value,
-				});
-			}
-			// Match found
-			else if (this.state.panel_list[ii].value == compare_string 
-        && ii != compare_panel_index){
-				console.log("BIGGER RIOT");
-				this.setState({
-					panel_list: state2,
-					compare_string: "",
-				});
-			}
-			// No Match found
-			else if (this.state.panel_list[ii].hidden && compare_string != "") {	
-				this.setState({
-					panel_list: state2,
-					score: this.state.score + 1,
-				});
-				window.setTimeout(function () {
-					let state3 = this.state.panel_list.map((panel3, kk) => {
-            if (compare_panel_index === kk) {
-							return {...panel3, hidden: true}
-						}
-						else {
-							return panel3;
-						}
-					});
-					let state4 = state3.map((panel4, jj) => { 
-						if (jj === ii) {
-							return {...panel4, hidden: true}
-						}
-						else {
-							return panel4
-						}
-					});
-
-					this.setState({
-						panel_list: state4,
-						compare_string: "",
-					});
-				}.bind(this), 625);
-			}
+	flip(clicked_panel_index, _ev) {
+		this.channel.push("flip", { panel_index: clicked_panel_index })
+			.receive("ok", (resp) => { this.setState(resp.game); });
+		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 	}
 
  	reset() {
-		let state1 = {
-			panel_list: _.shuffle("AABBCCDDEEFFGGHH")
-				.map(function (letter) {
-					return { value: letter, hidden: true }; 
-				}),
-			compare_string: "",
-			score: 0
-		}
-		this.setState(state1);
+		this.channel.push("reset").receive("ok", (resp) => {
+			this.setState(resp.game);
+		});
+		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 	}
 
   render() {
