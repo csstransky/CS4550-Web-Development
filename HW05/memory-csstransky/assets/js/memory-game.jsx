@@ -12,7 +12,7 @@ class Memory extends React.Component {
 
 		this.channel = props.channel;
 		this.state = {
-      panel_list: ["a"],
+      panel_list: [{ value: "Loading", hidden: false }],
       compare_string: "",
       score: 0,
     };
