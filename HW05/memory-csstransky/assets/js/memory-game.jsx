@@ -18,8 +18,9 @@ class Memory extends React.Component {
     };
 		this.channel.join()
 			.receive("ok", resp => {
-				console.log("Joined successfully", resp);
-        this.got_view.bind(resp);
+				console.log("Joined successfully5", resp);
+        this.setState(resp.game);
+        console.log("new view", resp);
 			})
 			.receive("error", resp => {
 				console.log("Unable to join", resp);
@@ -29,19 +30,14 @@ class Memory extends React.Component {
 
   }
 
-  got_view(view) {
-    console.log("new view", view);
-    this.setState(view.game);
-  }
-
 	flip(clicked_panel_index, _ev) {
 		this.channel.push("flip", { panel_index: clicked_panel_index })
-			.receive("ok", (resp) => { this.setState(resp.game); });
+			.receive("ok", resp => { this.setState(resp.game); });
 		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 	}
 
  	reset() {
-		this.channel.push("reset").receive("ok", (resp) => {
+		this.channel.push("reset").receive("ok", resp => {
 			this.setState(resp.game);
 		});
 		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."

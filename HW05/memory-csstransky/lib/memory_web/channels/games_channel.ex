@@ -23,6 +23,7 @@ defmodule MemoryWeb.GamesChannel do
     game = Game.flip(socket.assigns[:game], ll)
     socket = assign(socket, :game, game)
     BackupAgent.put(name, game)
+    IO.inspect game
     {:reply, {:ok, %{"game" => game}}, socket}
   end
 
