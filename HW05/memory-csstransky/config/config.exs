@@ -8,8 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :memory, MemoryWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  #TODO: Change this back for deployment
-  url: [host: "localhost", port: 4000],
+  url: [host: "hw05.cstransky.me", port: 80],
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json",
   version: Application.spec(:phoenix_distillery, :vsn),
@@ -25,7 +24,6 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# TODO: Do I actually have to worry about this?
 get_secret = fn name ->
   base = Path.expand("~/.config/phx-secrets")
   File.mkdir_p!(base)
@@ -37,7 +35,6 @@ get_secret = fn name ->
   String.trim(File.read!(path))
 end
 
-# TODO: Is this important at all?
 config :memory, MemoryWeb.Endpoint,
   secret_key_base: get_secret.("key_base")
 

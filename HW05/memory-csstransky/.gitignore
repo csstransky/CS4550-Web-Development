@@ -40,3 +40,8 @@ npm-debug.log
 # secrets files as long as you replace their contents by environment
 # variables.
 /config/*.secret.exs
+
+# I'm starting to think that downloading Atom was a big fucking mistake
+.elixir_ls/
+/.elixir_ls/
+/.elix*
