@@ -12,7 +12,7 @@ class Memory extends React.Component {
 
 		this.channel = props.channel;
 		this.state = {
-      panel_list: [{ value: "Loading", hidden: false }],
+      panel_list: [{ value: "Loading...", hidden: false }],
       compare_string: "",
       score: 0,
     };
@@ -25,9 +25,6 @@ class Memory extends React.Component {
 			.receive("error", resp => {
 				console.log("Unable to join", resp);
 			});
-
-		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
-
   }
 
 	flip(clicked_panel_index, _ev) {

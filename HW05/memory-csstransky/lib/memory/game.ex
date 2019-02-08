@@ -22,7 +22,7 @@ defmodule Memory.Game do
     compare_string = game.compare_string
     panel = Enum.at(game.panel_list, panel_index)
 
-    if panel.hidden do
+    if panel.hidden && compare_string != "LOCK" do
       if compare_string == "" do
         panel_first_click(game, panel_index)
       else
@@ -46,11 +46,19 @@ defmodule Memory.Game do
   end
 
   def panel_mismatch_click(game, panel_index) do
+    Process.send_after(self(),
+      {:flip_back, game, panel_index}, 1_000)
+    game
+    |> set_panel_hidden(panel_index, false)
+    |> Map.put(:score, game.score+1)
+    |> Map.put(:compare_string, "LOCK")
+  end
 
+  # TODO Fix this if you really need compare_string
+  def flip_back(game, panel_index) do
     game
     |> set_panel_hidden(panel_index, true)
     |> set_compare_panels_hidden(game.compare_string, true)
-    |> Map.put(:score, game.score+1)
     |> Map.put(:compare_string, "")
   end
 
@@ -98,6 +106,7 @@ defmodule Memory.Game do
       panel_list: game.panel_list,
       compare_string: game.compare_string,
       score: game.score,
+      should_flip_back:
     }
   end
 
