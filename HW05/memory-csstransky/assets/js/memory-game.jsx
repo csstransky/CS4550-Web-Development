@@ -25,22 +25,28 @@ class Memory extends React.Component {
 			.receive("error", resp => {
 				console.log("Unable to join", resp);
 			});
-
-		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
-
   }
 
 	flip(clicked_panel_index, _ev) {
-		this.channel.push("flip", { panel_index: clicked_panel_index })
-			.receive("ok", resp => { this.setState(resp.game); });
-		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
+    if (this.state.compare_string != "LOCK") {
+      this.channel.push("flip", { panel_index: clicked_panel_index })
+  			.receive("ok", resp => { this.setState(resp.game); });
+      window.setTimeout(function () {
+        this.channel.push("flip_back", { panel_index: clicked_panel_index })
+          .receive("ok", resp => { this.setState(resp.game); });
+      }.bind(this), 1000);
+    }
+    // Speeds up and unlocks the game right away
+    else {
+      this.channel.push("flip_back", { panel_index: clicked_panel_index })
+        .receive("ok", resp => { this.setState(resp.game); });
+    }
 	}
 
  	reset() {
 		this.channel.push("reset").receive("ok", resp => {
 			this.setState(resp.game);
 		});
-		// TODO: change ".receive("ok", (resp) ..." into .receive("ok", resp ..."
 	}
 
   render() {

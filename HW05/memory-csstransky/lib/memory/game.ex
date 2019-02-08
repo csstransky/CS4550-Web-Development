@@ -22,7 +22,7 @@ defmodule Memory.Game do
     compare_string = game.compare_string
     panel = Enum.at(game.panel_list, panel_index)
 
-    if panel.hidden do
+    if panel.hidden && compare_string != "LOCK" do
       if compare_string == "" do
         panel_first_click(game, panel_index)
       else
@@ -46,12 +46,25 @@ defmodule Memory.Game do
   end
 
   def panel_mismatch_click(game, panel_index) do
-
     game
-    |> set_panel_hidden(panel_index, true)
-    |> set_compare_panels_hidden(game.compare_string, true)
+    |> set_panel_hidden(panel_index, false)
     |> Map.put(:score, game.score+1)
-    |> Map.put(:compare_string, "")
+    |> Map.put(:compare_string, "LOCK")
+    |> Map.put(:flip_back_string, game.compare_string)
+    |> Map.put(:flip_back_index, panel_index)
+  end
+
+  def flip_back(game, panel_index) do
+    if game.flip_back_string != "" do
+      game
+      |> set_panel_hidden(game.flip_back_index, true)
+      |> set_compare_panels_hidden(game.flip_back_string, true)
+      |> Map.put(:compare_string, "")
+      |> Map.put(:flip_back_string, "")
+      |> Map.put(:flip_back_index, -1)
+    else
+      game
+    end
   end
 
   def panel_match_click(game, panel_index) do
@@ -89,7 +102,11 @@ defmodule Memory.Game do
     %{
       panel_list: starting_pair_list(),
       compare_string: "",
-      score: 0
+      score: 0,
+      # These variables are so ugly I can't stand it
+      # I can't wait to get rid of them when I get genServer working
+      flip_back_string: "",
+      flip_back_index: -1,
     }
   end
 
