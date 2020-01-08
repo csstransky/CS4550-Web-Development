@@ -11,7 +11,7 @@ I also included the images used by the hw01 site as well inside the site's html
 folder. 
   
 Homework 01 website:  
-[hw01.cstransky.me](http://hw01.cstransky.me)
+[hw01.cstransky.com](http://hw01.cstransky.com)
 
 Note: *hw01.csstransky.duckdns.org* was used as a temporary domain name so I 
 could complete this homework before the due date; it is still included in this 

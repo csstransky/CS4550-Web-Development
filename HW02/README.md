@@ -8,7 +8,7 @@ The configuration files are located in
 The html files are located in **html/\<site name\>/**  
   
 Homework 02 website:  
-[hw02.cstransky.me](http://hw02.cstransky.me)  
+[hw02.cstransky.com](http://hw02.cstransky.com)  
   
 #### For Part B:  
 **This calculator remembers past operations and uses PEMDAS when  
