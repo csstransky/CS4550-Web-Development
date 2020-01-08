@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :memory, MemoryWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "hw05.cstransky.me", port: 80],
+  url: [host: "hw05.cstransky.com", port: 80],
   server: true,
   cache_static_manifest: "priv/static/cache_manifest.json",
   version: Application.spec(:phoenix_distillery, :vsn),

@@ -5,7 +5,7 @@ Please fill in answers to the questions below:
 Cristian Stransky
 
 2. What hostname did you deploy to for Task 2?
-hw03.cstransky.me
+hw03.cstransky.com
 
 3. What's the URL of your git repo for Task 2?
 https://github.com/csstransky/CS4550-Web-Development/tree/master/HW03

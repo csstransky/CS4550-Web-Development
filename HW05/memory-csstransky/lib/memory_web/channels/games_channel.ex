@@ -3,11 +3,13 @@ defmodule MemoryWeb.GamesChannel do
 
   alias Memory.Game
   alias Memory.BackupAgent
+  alias Memory.GameServer
 
   def join("games:" <> name, payload, socket) do
     if authorized?(payload) do
       game = BackupAgent.get(name) || Game.reset()
       BackupAgent.put(name, game)
+      GameServer.start(name)
       socket = socket
       |> assign(:game, game)
       |> assign(:name, name)
@@ -41,6 +43,15 @@ defmodule MemoryWeb.GamesChannel do
     game = Game.reset()
     socket = assign(socket, :game, game)
     BackupAgent.put(name, game)
+    {:reply, {:ok, %{"game" => game}}, socket}
+  end
+
+  def handle_in("flip_back", %{ "panel_index" => ll }, socket) do
+    name = socket.assigns[:name]
+    game = Game.flip_back(socket.assigns[:game], ll)
+    socket = assign(socket, :game, game)
+    BackupAgent.put(name, game)
+    IO.inspect game
     {:reply, {:ok, %{"game" => game}}, socket}
   end
 

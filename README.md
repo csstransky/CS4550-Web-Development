@@ -3,4 +3,4 @@
 Spring 2019
 
 Link to main website:  
-[cstransky.me](http://cstransky.me)
+[cstransky.com](http://cstransky.com)
