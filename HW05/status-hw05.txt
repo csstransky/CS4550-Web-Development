@@ -15,7 +15,7 @@ v1.0
 
 
 4. What's the URL that you deployed to?
-hw05.cstransky.me
+hw05.cstransky.com
 
 
 5. Is your game functionality complete? If not, what's missing?

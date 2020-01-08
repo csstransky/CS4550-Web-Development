@@ -1,7 +1,7 @@
 
 <h1>Memory Game</h1>
 <p>Cristian Stransky</p>
-<p>Link back to the main domain: <a href="http://cstransky.me/">cstransky.me</a>.<br></p>
+<p>Link back to the main domain: <a href="http://cstransky.com/">cstransky.com</a>.<br></p>
 <div className="row">
   <div className="column">
     <h2 id="index-page">Join a Game</h2>
