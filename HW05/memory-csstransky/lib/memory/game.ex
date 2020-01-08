@@ -46,25 +46,20 @@ defmodule Memory.Game do
   end
 
   def panel_mismatch_click(game, panel_index) do
+    Process.send_after(self(),
+      {:flip_back, game, panel_index}, 1_000)
     game
     |> set_panel_hidden(panel_index, false)
     |> Map.put(:score, game.score+1)
     |> Map.put(:compare_string, "LOCK")
-    |> Map.put(:flip_back_string, game.compare_string)
-    |> Map.put(:flip_back_index, panel_index)
   end
 
-  def flip_back(game) do
-    if game.flip_back_string != "" do
-      game
-      |> set_panel_hidden(game.flip_back_index, true)
-      |> set_compare_panels_hidden(game.flip_back_string, true)
-      |> Map.put(:compare_string, "")
-      |> Map.put(:flip_back_string, "")
-      |> Map.put(:flip_back_index, -1)
-    else
-      game
-    end
+  # TODO Fix this if you really need compare_string
+  def flip_back(game, panel_index) do
+    game
+    |> set_panel_hidden(panel_index, true)
+    |> set_compare_panels_hidden(game.compare_string, true)
+    |> Map.put(:compare_string, "")
   end
 
   def panel_match_click(game, panel_index) do
@@ -117,6 +112,7 @@ defmodule Memory.Game do
       panel_list: game.panel_list,
       compare_string: game.compare_string,
       score: game.score,
+      should_flip_back:
     }
   end
 

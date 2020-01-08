@@ -28,7 +28,7 @@ namecheap as a domain provider.
 3. What domain name did you register?
 csstransky.duckdns.org (to be changed in the future)
 
-UPDATE: cstransky.me is now my domain name, though I am still hosting
+UPDATE: cstransky.com is now my domain name, though I am still hosting
 the duckDNS domain name as well on my private server.
 
 

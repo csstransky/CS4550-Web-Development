@@ -2,7 +2,11 @@ server {
     listen 80;
     listen [::]:80;
 
+<<<<<<< HEAD:HW05/memory-csstransky/memory2.nginx
     server_name hw05.cstransky.me;
+=======
+    server_name hw04.cstransky.com;
+>>>>>>> HW05-genserver:HW05/memory-csstransky/memory.nginx
 
     location / {
         proxy_pass http://localhost:5797;
